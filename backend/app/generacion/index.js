@@ -25,7 +25,7 @@ class Generacion{
 		}
 
 
-		return new Dragon();
+		return new Dragon({ generacionId:this.generacionId });
 	}
 }
 
