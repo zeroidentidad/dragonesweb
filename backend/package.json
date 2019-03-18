@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "dev": "nodemon ."
+    "start": "node ./bin/servidor",
+    "dev": "nodemon ./bin/servidor"
   },
   "keywords": [
     "postgresql",
@@ -16,5 +16,8 @@
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
