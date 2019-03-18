@@ -1,4 +1,5 @@
 const Generacion = require('./index');
+const TablaGeneracion = require('./tabla');
 
 class MotorGeneracion{
 	constructor(){
@@ -15,14 +16,21 @@ class MotorGeneracion{
 	}
 
 	construirNuevaGeneracion(){
-		this.generacion = new Generacion();
+		const generacion = new Generacion();
 
-		console.log('Nueva generación', this.generacion);
+		TablaGeneracion.almacenarGeneracion(generacion)
+		.then(({ generacionId })=>{
+			this.generacion = generacion;
+			this.generacion.generacionId = generacionId;
 
-		this.timer = setTimeout(
-			()=>this.construirNuevaGeneracion(),
-			this.generacion.expiracion.getTime() - Date.now()
-		);
+			console.log('Nueva generación', this.generacion);
+
+			this.timer = setTimeout(
+				()=>this.construirNuevaGeneracion(),
+				this.generacion.expiracion.getTime() - Date.now()
+			);
+		})
+		.catch(error=>console.error(error));
 	}
 }
 
