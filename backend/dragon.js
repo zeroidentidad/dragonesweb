@@ -7,7 +7,7 @@ const DEFAULT_PROPIEDADES = {
 		const rasgos = [];
 		RASGOS.forEach(RASGO => {
 			const tipoRasgo = RASGO.tipo;
-			const valoresRasgo = RASGO.values;
+			const valoresRasgo = RASGO.valores;
 
 			const valorRasgo = valoresRasgo[
 				Math.floor(Math.random()*valoresRasgo.length)

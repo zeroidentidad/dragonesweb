@@ -2,37 +2,37 @@
 {
 	"tipo":"backgroundColor",
 	"valores":[
-		"black",
-		"white",
-		"green",
-		"blue"
+		"negro",
+		"blanco",
+		"verde",
+		"azul"
 	]
 },
 {
 	"tipo":"pattern",
 	"valores":[
-		"plain",
-		"striped",
-		"spotted",
-		"patchy"
+		"simple",
+		"rayado",
+		"moteado",
+		"irregular"
 	]
 },
 {
 	"tipo":"build",
 	"valores":[
-		"slender",
-		"stocky",
-		"sporty",
-		"skinny"
+		"esbelto",
+		"rechoncho",
+		"deportivo",
+		"flaco"
 	]
 },
 {
 	"tipo":"size",
 	"valores":[
-		"small",
-		"medium",
-		"large",
-		"enormous"
+		"pequeño",
+		"mediano",
+		"grande",
+		"gigante"
 	]
 }
 ]
