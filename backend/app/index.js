@@ -15,6 +15,15 @@ app.locals.motor = motor;
 app.use('/dragon', RutaDragon);
 app.use('/generacion', RutaGeneracion);
 
+
+app.use((error, solicitud, respuesta, siguiente)=>{
+	const statusCodigo=error.statusCodigo || 500;
+
+	respuesta.status(statusCodigo).json({
+		tipo: 'error', mensaje: error.message
+	});
+});
+
 motor.iniciar();
 
 /*setTimeout(()=>{

@@ -1,4 +1,4 @@
-const RASGOS = require('../data/rasgos.json');
+const RASGOS = require('../../data/rasgos.json');
 
 const DEFAULT_PROPIEDADES = {
 	nickname: 'sinnombre',
