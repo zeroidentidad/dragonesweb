@@ -13,3 +13,5 @@ Documentación del desarrollo de caso practico con NodeJS, React y PostgreSQL
 ## creación BD /backend/scripts_sql:
 
 - estructura_bd.sql
+
+- node ./data/insertarRasgos.js -> rasgos predeterminados para la tabla.

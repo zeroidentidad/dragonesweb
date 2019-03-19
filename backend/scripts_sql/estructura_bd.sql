@@ -25,3 +25,11 @@ nickname varchar(64),
 "generacionId" integer,
 foreign key ("generacionId") references generacion(id)
 );
+
+-- RASGO:
+
+create table rasgo(
+id serial primary key,
+"tipoRasgo" varchar not null,
+"valorRasgo" varchar not null
+);
