@@ -1,6 +1,7 @@
 const RASGOS = require('../../data/rasgos.json');
 
 const DEFAULT_PROPIEDADES = {
+	dragonId: undefined,
 	nickname: 'sinnombre',
 	generacionId: undefined,
 	get nacimientofecha(){ return new Date() },
@@ -20,7 +21,8 @@ const DEFAULT_PROPIEDADES = {
 }
 
 class Dragon{
-	constructor({ nacimientofecha, nickname, rasgos, generacionId } = {}){
+	constructor({ dragonId, nacimientofecha, nickname, rasgos, generacionId } = {}){
+		this.dragonId = dragonId || DEFAULT_PROPIEDADES.dragonId;
 		this.nacimientofecha = nacimientofecha || DEFAULT_PROPIEDADES.nacimientofecha;
 		this.nickname = nickname || DEFAULT_PROPIEDADES.nickname;
 		this.rasgos = rasgos || DEFAULT_PROPIEDADES.rasgosAleatorios;

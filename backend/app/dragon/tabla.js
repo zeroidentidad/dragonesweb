@@ -26,6 +26,29 @@ class TablaDragon{
 			)
 		});
 	}
+
+
+	static getDragon({ dragonId }){
+		return new Promise ((resuelto, rechazado) =>{
+			pool.query(
+				`SELECT nacimientofecha, nickname, "generacionId"
+				 FROM dragon WHERE dragon.id = $1`,
+				 [dragonId],
+				 (error, respuesta)=>{
+				 	if (error) return rechazado(error);
+
+				 	if (respuesta.rows.length===0) return rechazado(new Error('Sin Dragon'));
+
+				 	resuelto(respuesta.rows[0]);
+				 }
+			)
+		});
+	}
+
 }
+
+/*TablaDragon.getDragon({ dragonId: 3 })
+.then(dragon => console.log(dragon))
+.catch(error => console.error('error',error));*/
 
 module.exports = TablaDragon;
