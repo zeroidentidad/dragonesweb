@@ -10,14 +10,12 @@ CREATE DATABASE dragones OWNER = dragones TABLESPACE = ts_dragones;
 -->> CONEXION CON EL USUARIO dragones para lo siguiente:
 
 -- GENERACIÓN:
-
 create table generacion(
 id serial primary key, 
 expiracion timestamp not null
 );
 
 -- DRAGON:
-
 create table dragon(
 id serial primary key,
 nacimientofecha timestamp not null,
@@ -27,9 +25,16 @@ foreign key ("generacionId") references generacion(id)
 );
 
 -- RASGO:
-
 create table rasgo(
 id serial primary key,
 "tipoRasgo" varchar not null,
 "valorRasgo" varchar not null
+);
+
+-- RASGO - DRAGON:
+create table rasgoDragon(
+"rasgoId" integer,
+"dragonId" integer,
+foreign key ("rasgoId") references rasgo(id),
+foreign key ("dragonId") references dragon(id)
 );

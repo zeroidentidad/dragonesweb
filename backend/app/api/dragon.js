@@ -6,7 +6,7 @@ ruta.get('/nuevo',(solicitud, respuesta, siguiente)=>{
 
 	const dragon = solicitud.app.locals.motor.generacion.nuevoDragon();
 
-	TablaDragon.almacenarDragon('foo')
+	TablaDragon.almacenarDragon(dragon)
 	.then(({ dragonId })=>{
 		console.log('dragonId', dragonId);
 
