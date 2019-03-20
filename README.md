@@ -18,6 +18,12 @@ Documentación del desarrollo de caso practico con NodeJS, React y PostgreSQL
 
 - npm i babel-preset-env babel-preset-react babel-plugin-transform-class-properties --save-dev  -> para transpilación del codigo JS
 
+- #configuracion inicial: .babelrc con: { "presets": ["env", "react"], "plugins": ["transform-class-properties"] }
+
+-> package.json con: "start": "parcel index.html", "clean": "rm -rf dist .cache"
+
+* ver archivos finales en el dir /frontend de .babelrc  y package.json
+
 ## creación BD /backend/scripts_sql:
 
 - estructura_bd.sql

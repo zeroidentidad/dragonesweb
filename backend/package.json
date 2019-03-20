@@ -9,8 +9,7 @@
   },
   "keywords": [
     "postgresql",
-    "node",
-    "react"
+    "node"
   ],
   "author": "Jesus Antonio Ferrer Sanchez",
   "license": "ISC",
