@@ -4,12 +4,12 @@ class Generacion extends Component{
 
 	estado = { generacion: { generacionId: 999, expiracion:'2020-05-01'} };
 
-	componenteMontado(){
+	componentDidMount(){ /* funcion React */
 		this.recuperarGeneracion();
 	}
 
 	recuperarGeneracion = () =>{
-		recuperar('http://localhost:3000/generacion')
+		fetch('http://localhost:3000/generacion') /* funcion JS */
 		.then(respuesta => console.log('respuesta', respuesta));
 	};
 
@@ -18,7 +18,7 @@ class Generacion extends Component{
 		return(
 			<div>
 			<h3>Generacion {generacion.generacionId}. Expira en:</h3>
-			<h4>{ new Date(generacion.expiracion).toString()}</h4>
+			<h4>{new Date(generacion.expiracion).toString()}</h4>
 			</div>
 		)
 	}

@@ -10,6 +10,8 @@ Documentación del desarrollo de caso practico con NodeJS, React y PostgreSQL
 
 - npm i pg --save -> pool conexion BD
 
+- npm i cors --save -> para intercambio de recursos de origen cruzado entre el backend y el frontend
+
 ## instalación dependencias /frontend:
 
 - npm i -g parcel-bundler  -> instalacion global del empaquetador web
