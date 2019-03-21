@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import DragonAvatar from './DragonAvatar';
 
 const DRAGON_DEFAULT = {
@@ -25,7 +26,12 @@ class Dragon extends Component {
 
 	render(){
 		//const { generacionId, dragonId, rasgos } = this.state.dragon;
-		return <DragonAvatar dragon ={this.state.dragon} />;		
+		return (
+			<div>
+				<Button onClick={this.recuperarDragon}>Nuevo Dragon</Button>
+				<DragonAvatar dragon={this.state.dragon} />
+			</div>
+		);		
 	}
 }
 

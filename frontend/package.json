@@ -8,20 +8,22 @@
     "start": "npm run clean && parcel src/index.html",
     "dev": "npm run start"
   },
-  "keywords":[
+  "keywords": [
     "react",
     "parcel",
-    "babel"],
+    "babel"
+  ],
   "author": "Jesus Antonio Ferrer Sanchez",
   "license": "ISC",
   "dependencies": {
-    "react": "^16.2.0",
+    "react": "^16.4.2",
+    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1"
   }
 }
