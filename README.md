@@ -24,11 +24,11 @@ Documentación del desarrollo de caso practico con NodeJS, React y PostgreSQL
 
 -> package.json con: "start": "parcel index.html", "clean": "rm -rf dist .cache"
 
-* ver archivos finales en el dir /frontend de .babelrc  y package.json
-
 - npm i react-bootstrap@0.32.4 --save
 
 - npm i babel-plugin-transform-object-rest-spread@6.26.0 --save-dev
+
+* ver archivos finales en el dir /frontend de .babelrc  y package.json
 
 ## creación BD /backend/scripts_sql:
 
