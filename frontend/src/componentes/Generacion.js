@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-
-const GENERACION_DEFAULT = { generacionId: '', expiracion: '' };
+import { connect } from 'react-redux';
+import { recuperarGeneracion } from '../acciones/generacion';
+import recuperarEstados from '../reductores/recuperarEstados';
 
 const RETRASO_MINIMO = 3000;
 
 class Generacion extends Component{
 
-	state = { generacion: GENERACION_DEFAULT }; // necesario 'state' no se puede usar en español con la palabra "estado" 
-
 	timer = null;
 
-	componentDidMount(){ /* funcion React */
+	componentDidMount(){ /* funcion compat old React */
 		this.recuperarSiguienteGeneracion();
 	}
 
@@ -18,21 +17,10 @@ class Generacion extends Component{
 		clearTimeout(this.timer);
 	}
 
-	recuperarGeneracion = () =>{
-		fetch('http://localhost:3000/generacion') /* funcion JS */
-		.then(respuesta => respuesta.json())
-		.then(json => {
-			console.log('json',json)
-
-			this.setState({ generacion: json.generacion }); // acualizar estado del componente
-		})
-		.catch(error => console.error('error', error));
-	};
-
 	recuperarSiguienteGeneracion = () =>{
-		this.recuperarGeneracion();
+		this.props.recuperarGeneracion();
 
-		let retraso = new Date(this.state.generacion.expiracion).getTime() - new Date().getTime();
+		let retraso = new Date(this.props.generacion.expiracion).getTime() - new Date().getTime();
 
 		if(retraso < RETRASO_MINIMO){
 			retraso = RETRASO_MINIMO;
@@ -42,7 +30,12 @@ class Generacion extends Component{
 	};	
 
 	render(){
-		const { generacion } = this.state;
+		const { generacion } = this.props;
+
+		if (generacion.status === recuperarEstados.error) {
+			return <div>{generacion.message}</div>;
+		}
+
 		return(
 			<div>
 			<h3>Generacion {generacion.generacionId}. Expira en:</h3>
@@ -52,4 +45,16 @@ class Generacion extends Component{
 	}
 }
 
-export default Generacion;
+const mapaStateToProps = state => {
+  const generacion = state.generacion;
+
+  return { generacion };
+};
+
+const conectorComponente = connect(
+  mapaStateToProps,
+  { recuperarGeneracion }
+);
+
+
+export default conectorComponente(Generacion);

@@ -30,6 +30,10 @@ Documentación del desarrollo de caso practico con NodeJS, React y PostgreSQL
 
 - npm i redux@4.0.0 --save
 
+- npm i react-redux@5.0.7 --save
+
+- npm i redux-thunk@2.3.0 --save
+
 * ver archivos finales en el dir /frontend de .babelrc  y package.json
 
 ## creación BD /backend/scripts_sql:
