@@ -28,6 +28,8 @@ Documentación del desarrollo de caso practico con NodeJS, React y PostgreSQL
 
 - npm i babel-plugin-transform-object-rest-spread@6.26.0 --save-dev
 
+- npm i redux@4.0.0 --save
+
 * ver archivos finales en el dir /frontend de .babelrc  y package.json
 
 ## creación BD /backend/scripts_sql:
