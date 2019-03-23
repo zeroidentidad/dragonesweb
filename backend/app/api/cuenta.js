@@ -1,0 +1,69 @@
+const { Router } = require('express');
+const TablaCuenta = require('../cuenta/tabla');
+const Sesion = require('../cuenta/sesion');
+const { hash } = require('../cuenta/ayudante');
+const { setSesion, cuentaAutenticada } = require('./ayudante');
+//const TablaCuentaDragon = require('../cuentaDragon/tabla');
+//const { getDragonConRasgos } = require('../dragon/ayudante');
+
+const router = new Router();
+
+router.post('/signup', (solicitud, respuesta, siguiente) => {
+  const { username, password } = solicitud.body;
+  const usernameHash = hash(username);
+  const passwordHash = hash(password);
+
+  TablaCuenta.getCuenta({ usernameHash })
+    .then(({ cuenta }) => {
+      if (!cuenta) {
+        return TablaCuenta.almacenarCuenta({ usernameHash, passwordHash })
+      } else {
+        const error = new Error('Este usuario ya existe.');
+
+        error.statusCode = 409;
+
+        throw error;
+      }
+    })
+    .then(() => {
+      return setSesion({ username, respuesta });
+    })
+    .then(({ mensaje }) => respuesta.json({ mensaje }))
+    .catch(error => siguiente(error));
+});
+
+router.post('/login', (solicitud, respuesta, siguiente) => {
+  const { username, password } = solicitud.body;
+
+  TablaCuenta.getCuenta({ usernameHash: hash(username) })
+    .then(({ cuenta }) => {
+      if (cuenta && cuenta.passwordHash === hash(password)) {
+        const { sesionId } = cuenta;
+      
+        return setSesion({ username, respuesta, sesionId })
+      } else {
+        const error = new Error('Username/password incorrecto.');
+
+        error.statusCode = 409;
+
+        throw error;
+      }
+    })
+    .then(({ mensaje }) => respuesta.json({ mensaje }))
+    .catch(error => siguiente(error));
+});
+
+router.get('/logout', (solicitud, respuesta, siguiente) => {
+  const { username } = Sesion.parse(solicitud.cookies.sesionString);
+
+  TablaCuenta.updateSesionId({
+    sesionId: null,
+    usernameHash: hash(username)
+  }).then(() => {
+    respuesta.clearCookie('sesionString');
+
+    respuesta.json({ mensaje: 'Logout exitoso.' });
+  }).catch(error => siguiente(error));
+});
+
+module.exports = router;

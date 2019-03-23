@@ -34,7 +34,7 @@ class DragonAvatar extends Component {
 	render(){
 		const { generacionId, dragonId, rasgos } = this.props.dragon;
 
-		//if(!dragonId) return <div></div>;
+		if(!dragonId) return <div></div>;
 
 		return(
 			<div>

@@ -3,7 +3,7 @@ import recuperarEstados from './recuperarEstados';
 
 const GENERACION_DEFAULT = { generacionId: '', expiracion: '' };
 
-const generacionReducer = (state = GENERACION_DEFAULT, action) => {
+const generacion = (state = GENERACION_DEFAULT, action) => {
   switch(action.type) {
     case GENERACION.FETCH:
       return { ...state, status: recuperarEstados.fetching };
@@ -16,4 +16,4 @@ const generacionReducer = (state = GENERACION_DEFAULT, action) => {
   }
 }
 
-export default generacionReducer;
+export default generacion;

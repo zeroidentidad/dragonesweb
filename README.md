@@ -12,6 +12,14 @@ Documentación del desarrollo de caso practico con NodeJS, React y PostgreSQL
 
 - npm i cors --save -> para intercambio de recursos de origen cruzado entre el backend y el frontend
 
+- npm i body-parser@1.18.3 --save-dev -> para los formatos de peticiona a la API
+
+- npm i crypto-js@3.1.9-1 --save -> para encriptacion de usuario y contraseña
+
+- npm i uuid@3.3.2 --save  -> para generacion aletoria de id de sesion
+
+- npm i cookie-parser@1.4.3 --save  -> para manipulacion de las cookies creadas
+
 ## instalación dependencias /frontend: (versiones estables)
 
 - npm i -g parcel-bundler@1.9.7  -> instalacion global del empaquetador web

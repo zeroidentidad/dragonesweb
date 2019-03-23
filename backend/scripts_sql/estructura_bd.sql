@@ -38,3 +38,11 @@ create table rasgoDragon(
 foreign key ("rasgoId") references rasgo(id),
 foreign key ("dragonId") references dragon(id)
 );
+
+-- CUENTA:
+create table cuenta(
+id             serial primary key,
+"usernameHash" character(64),
+"passwordHash" character(64),
+"sesionId"    character(36)
+);
