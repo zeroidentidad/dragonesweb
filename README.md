@@ -20,6 +20,8 @@ Documentación del desarrollo de caso practico con NodeJS, React y PostgreSQL
 
 - npm i cookie-parser@1.4.3 --save  -> para manipulacion de las cookies creadas
 
+- npm i base-64@0.1.0 --save -> 
+
 ## instalación dependencias /frontend: (versiones estables)
 
 - npm i -g parcel-bundler@1.9.7  -> instalacion global del empaquetador web
@@ -41,6 +43,12 @@ Documentación del desarrollo de caso practico con NodeJS, React y PostgreSQL
 - npm i react-redux@5.0.7 --save
 
 - npm i redux-thunk@2.3.0 --save
+
+- npm i history@4.7.2 --save
+
+- npm i react-router@4.3.1 --save
+
+- npm i react-router-dom@4.3.1 --save
 
 * ver archivos finales en el dir /frontend de .babelrc  y package.json
 

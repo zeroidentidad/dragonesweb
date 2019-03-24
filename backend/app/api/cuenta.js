@@ -3,8 +3,8 @@ const TablaCuenta = require('../cuenta/tabla');
 const Sesion = require('../cuenta/sesion');
 const { hash } = require('../cuenta/ayudante');
 const { setSesion, cuentaAutenticada } = require('./ayudante');
-//const TablaCuentaDragon = require('../cuentaDragon/tabla');
-//const { getDragonConRasgos } = require('../dragon/ayudante');
+const TablaCuentaDragon = require('../cuentaDragon/tabla');
+const { getDragonConRasgos } = require('../dragon/ayudante');
 
 const router = new Router();
 
@@ -64,6 +64,40 @@ router.get('/logout', (solicitud, respuesta, siguiente) => {
 
     respuesta.json({ mensaje: 'Logout exitoso.' });
   }).catch(error => siguiente(error));
+});
+
+router.get('/autenticado', (solicitud, respuesta, siguiente) => {
+  cuentaAutenticada({ sesionString: solicitud.cookies.sesionString })
+    .then(({ autenticado }) => respuesta.json({ autenticado }))
+    .catch(error => siguiente(error));
+});
+
+router.get('/dragones', (solicitud, respuesta, siguiente) => {
+  cuentaAutenticada({ sesionString: solicitud.cookies.sesionString })
+    .then(({ cuenta }) => {
+      return TablaCuentaDragon.getDragonesCuenta({
+        cuentaId: cuenta.id
+      });
+    })
+    .then(({ cuentaDragones }) => {
+      return Promise.all(
+        cuentaDragones.map(cuentaDragon => {
+          return getDragonConRasgos({ dragonId: cuentaDragon.dragonId });
+        })
+      );
+    })
+    .then(dragones => {
+      respuesta.json({ dragones });
+    })
+    .catch(error => siguiente(error));
+});
+
+router.get('/info', (solicitud, respuesta, siguiente) => {
+  cuentaAutenticada({ sesionString: solicitud.cookies.sesionString })
+    .then(({ cuenta, username }) => {
+      respuesta.json({ info: { balance: cuenta.balance, username } });
+    })
+    .catch(error => siguiente(error));
 });
 
 module.exports = router;

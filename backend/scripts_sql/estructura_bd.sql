@@ -20,6 +20,9 @@ create table dragon(
 id serial primary key,
 nacimientofecha timestamp not null,
 nickname varchar(64),
+"isPublic"     BOOLEAN NOT NULL,
+"saleValue"    INTEGER NOT NULL,
+"sireValue"    INTEGER NOT NULL,
 "generacionId" integer,
 foreign key ("generacionId") references generacion(id)
 );
@@ -44,5 +47,31 @@ create table cuenta(
 id             serial primary key,
 "usernameHash" character(64),
 "passwordHash" character(64),
-"sesionId"    character(36)
+"sesionId"    character(36),
+balance        INTEGER NOT NULL
 );
+
+-- CUENTA - DRAGON:
+CREATE TABLE cuentaDragon(
+  "cuentaId" INTEGER REFERENCES cuenta(id),
+  "dragonId"  INTEGER REFERENCES dragon(id),
+  PRIMARY KEY ("cuentaId", "dragonId")
+);
+
+
+
+/*
+drop table cuentaDragon;
+drop table cuenta;
+drop table rasgoDragon;
+drop table dragon;
+drop table generacion;
+
+drop table rasgo;
+
+truncate cuentaDragon;
+truncate cuenta cascade;
+truncate rasgoDragon;
+truncate dragon cascade;
+truncate generacion cascade;
+*/

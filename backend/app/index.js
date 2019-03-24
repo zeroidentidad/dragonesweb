@@ -15,7 +15,7 @@ const motor = new MotorGeneracion();
 
 app.locals.motor = motor;
 
-app.use(cors({ origin:'http://localhost:1234' }));
+app.use(cors({ origin:'http://localhost:1234', credentials: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 

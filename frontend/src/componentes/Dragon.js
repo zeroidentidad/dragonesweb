@@ -1,36 +1,33 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
 import DragonAvatar from './DragonAvatar';
 import { recuperarDragon } from '../acciones/dragon';
 import recuperarEstados from '../reductores/recuperarEstados';
 
-/*const DRAGON_DEFAULT = {
-	dragonId: '', generacionId: '',
-	nickname: '', nacimientofecha: '',
-	rasgos: []
-};*/
+/*const DRAGON_DEFAULT = { dragonId: '', generacionId: '', nickname: '', nacimientofecha: '', rasgos: [] };*/
 
 class Dragon extends Component {
-	state = { dragon: DRAGON_DEFAULT };
+	//state = { dragon: DRAGON_DEFAULT };
+	/*componentDidMount(){ this.recuperarDragon(); }*/
 
-	/*componentDidMount(){
-		this.recuperarDragon();
-	}*/
-	/*recuperarDragon = () =>{
-		fetch('http://localhost:3000/dragon/nuevo')
-		.then(respuesta => respuesta.json()).then(json => this.setState({ dragon: json.dragon }))
-		.catch(error => console.error('error', error));
-	}*/
+	get DragonView() {
+		const { dragon } = this.props;
+
+		if (dragon.status === recuperarEstados.error) return <span>{dragon.message}</span>;
+
+		return <DragonAvatar dragon={dragon} />;
+	}	
 
 	render(){
 		//const { generacionId, dragonId, rasgos } = this.state.dragon;
 		return (
 			<div>
 				<Button onClick={this.props.recuperarDragon}>Nuevo Dragon</Button>
-				<DragonAvatar dragon={this.props.dragon} />
+				<br />
+				{ this.DragonView }
 			</div>
-		);		
+		)
 	}
 }
 

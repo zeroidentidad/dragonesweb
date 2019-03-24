@@ -27,8 +27,28 @@ const getDragonConRasgos = ({ dragonId }) => {
 	.catch(error => console.error(error));
 };
 
+const getDragonesPublicos = () => {
+  return new Promise((resuelto, rechazado) => {
+    pool.query(
+      'SELECT id FROM dragon WHERE "isPublic" = TRUE',
+      (error, respuesta) => {
+        if (error) return rechazado(error);
+
+        const dragonPublicoRows = respuesta.rows;
+
+        Promise.all(
+          dragonPublicoRows.map(
+            ({ id }) => getDragonConRasgos({ dragonId: id })
+          )
+        ).then(dragones => resuelto({ dragones }))
+         .catch(error => rechazado(error));
+      }
+    )
+  });
+}
+
 /*getDragonConRasgos({ dragonId: 3 })
 .then(dragon => console.log('dragon',dragon))
 .catch(error => console.error('error',error));*/
 
-module.exports = { getDragonConRasgos };
+module.exports = { getDragonConRasgos, getDragonesPublicos };

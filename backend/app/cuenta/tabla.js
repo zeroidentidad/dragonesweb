@@ -1,13 +1,13 @@
 const pool = require('../../poolDB');
-//const { STARTING_BALANCE } = require('../config');
+const { STARTING_BALANCE } = require('../config');
 
 class TablaCuenta {
   static almacenarCuenta({ usernameHash, passwordHash }) {
     return new Promise((resuelto, rechazado) => {
       pool.query(
-        `INSERT INTO cuenta("usernameHash", "passwordHash")
-         VALUES($1, $2)`,
-        [usernameHash, passwordHash],
+        `INSERT INTO cuenta("usernameHash", "passwordHash", balance)
+         VALUES($1, $2, $3)`,
+        [usernameHash, passwordHash, STARTING_BALANCE],
         (error, respuesta) => {
           if (error) return rechazado(error);
 
@@ -20,7 +20,7 @@ class TablaCuenta {
   static getCuenta({ usernameHash }) {
     return new Promise((resuelto, rechazado) => {
       pool.query(
-        `SELECT id, "passwordHash", "sesionId" FROM cuenta
+        `SELECT id, "passwordHash", "sesionId", balance FROM cuenta
          WHERE "usernameHash" = $1`,
         [usernameHash],
         (error, respuesta) => {
@@ -46,7 +46,7 @@ class TablaCuenta {
     });
   }
 
-  /*static updateBalance({ cuentaId, valor }) {
+  static updateBalance({ cuentaId, valor }) {
     return new Promise((resuelto, rechazado) => {
       pool.query(
         'UPDATE cuenta SET balance = balance + $1 WHERE id = $2',
@@ -58,7 +58,8 @@ class TablaCuenta {
         }
       )
     });
-  }*/
+  }
+  
 }
 
 module.exports = TablaCuenta;
