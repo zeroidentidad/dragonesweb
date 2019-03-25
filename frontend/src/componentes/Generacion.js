@@ -6,7 +6,6 @@ import recuperarEstados from '../reductores/recuperarEstados';
 const RETRASO_MINIMO = 3000;
 
 class Generacion extends Component{
-
 	timer = null;
 
 	componentDidMount(){ /* funcion compat old React */
@@ -20,14 +19,15 @@ class Generacion extends Component{
 	recuperarSiguienteGeneracion = () =>{
 		this.props.recuperarGeneracion();
 
-		let retraso = new Date(this.props.generacion.expiracion).getTime() - new Date().getTime();
+		let retraso = new Date(this.props.generacion.expiracion).getTime() - 
+			new Date().getTime();
 
 		if(retraso < RETRASO_MINIMO){
 			retraso = RETRASO_MINIMO;
 		};
 
 		this.timer = setTimeout(()=>this.recuperarSiguienteGeneracion(), retraso);
-	};	
+	}	
 
 	render(){
 		const { generacion } = this.props;

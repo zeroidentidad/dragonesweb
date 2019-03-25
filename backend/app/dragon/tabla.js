@@ -31,8 +31,8 @@ class TablaDragon{
 	static getDragon({ dragonId }){
 		return new Promise ((resuelto, rechazado) =>{
 			pool.query(
-				`SELECT nacimientofecha, nickname, "generacionId", "isPublic", "saleValue", "sireValue", "sireValue"
-				 FROM dragon WHERE dragon.id = $1`,
+				`SELECT nacimientofecha, nickname, "generacionId", "isPublic", "saleValue", "sireValue" 
+				FROM dragon WHERE dragon.id = $1`,
 				 [dragonId],
 				 (error, respuesta)=>{
 				 	if (error) return rechazado(error);

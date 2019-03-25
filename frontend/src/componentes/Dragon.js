@@ -5,8 +5,6 @@ import DragonAvatar from './DragonAvatar';
 import { recuperarDragon } from '../acciones/dragon';
 import recuperarEstados from '../reductores/recuperarEstados';
 
-/*const DRAGON_DEFAULT = { dragonId: '', generacionId: '', nickname: '', nacimientofecha: '', rasgos: [] };*/
-
 class Dragon extends Component {
 	//state = { dragon: DRAGON_DEFAULT };
 	/*componentDidMount(){ this.recuperarDragon(); }*/

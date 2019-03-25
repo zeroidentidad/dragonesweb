@@ -20,7 +20,7 @@ Documentación del desarrollo de caso practico con NodeJS, React y PostgreSQL
 
 - npm i cookie-parser@1.4.3 --save  -> para manipulacion de las cookies creadas
 
-- npm i base-64@0.1.0 --save -> 
+- npm i base-64@0.1.0 --save -> para simulacion de herencia de rasgos
 
 ## instalación dependencias /frontend: (versiones estables)
 

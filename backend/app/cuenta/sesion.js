@@ -44,11 +44,4 @@ class Sesion {
   }
 }
 
-/*const test = new Sesion({username: 'alguien'});
-const testString = test.toString();
-console.log('Sesion.parse(testString)', Sesion.parse(testString));
-console.log('Sesion.verify(testString)', Sesion.verify(testString));
-const fakeTestString = `admin_${testString}`;
-console.log('Sesion.verify(fakeTestString)', Sesion.verify(fakeTestString)); */
-
 module.exports = Sesion;

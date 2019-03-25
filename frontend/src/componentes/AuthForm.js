@@ -43,7 +43,7 @@ class AuthForm extends Component {
   render() {
     return (
       <div>
-        <h2>Dragones Web</h2>
+        <h2></h2>
         <FormGroup>
           <FormControl
             type='text'

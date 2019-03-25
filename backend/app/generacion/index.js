@@ -5,6 +5,7 @@ const refreshRate = REFRESH_RATE * SEGUNDOS;
 
 class Generacion{
 	constructor(){
+		this.cuentaIds = new Set();
 		this.expiracion = this.calcularExpiracion();
 		this.generacionId = undefined;
 	}
@@ -19,13 +20,18 @@ class Generacion{
 		return new Date(Date.now()+msHastaExpiracion);
 	}
 
-	nuevoDragon(){
+	nuevoDragon({ cuentaId }){
 		if(Date.now()>this.expiracion){
 			throw new Error(`Esta generación expiro en ${this.expiracion}`);
 		}
 
+	    if (this.cuentaIds.has(cuentaId)) {
+	      throw new Error('Ya tienes un dragón de esta generación.');
+	    }
 
-		return new Dragon({ generacionId:this.generacionId });
+	    this.cuentaIds.add(cuentaId);
+
+		return new Dragon({ generacionId: this.generacionId });
 	}
 }
 

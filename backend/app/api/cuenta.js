@@ -6,9 +6,9 @@ const { setSesion, cuentaAutenticada } = require('./ayudante');
 const TablaCuentaDragon = require('../cuentaDragon/tabla');
 const { getDragonConRasgos } = require('../dragon/ayudante');
 
-const router = new Router();
+const ruta = new Router();
 
-router.post('/signup', (solicitud, respuesta, siguiente) => {
+ruta.post('/signup', (solicitud, respuesta, siguiente) => {
   const { username, password } = solicitud.body;
   const usernameHash = hash(username);
   const passwordHash = hash(password);
@@ -32,7 +32,7 @@ router.post('/signup', (solicitud, respuesta, siguiente) => {
     .catch(error => siguiente(error));
 });
 
-router.post('/login', (solicitud, respuesta, siguiente) => {
+ruta.post('/login', (solicitud, respuesta, siguiente) => {
   const { username, password } = solicitud.body;
 
   TablaCuenta.getCuenta({ usernameHash: hash(username) })
@@ -53,7 +53,7 @@ router.post('/login', (solicitud, respuesta, siguiente) => {
     .catch(error => siguiente(error));
 });
 
-router.get('/logout', (solicitud, respuesta, siguiente) => {
+ruta.get('/logout', (solicitud, respuesta, siguiente) => {
   const { username } = Sesion.parse(solicitud.cookies.sesionString);
 
   TablaCuenta.updateSesionId({
@@ -66,13 +66,13 @@ router.get('/logout', (solicitud, respuesta, siguiente) => {
   }).catch(error => siguiente(error));
 });
 
-router.get('/autenticado', (solicitud, respuesta, siguiente) => {
+ruta.get('/autenticado', (solicitud, respuesta, siguiente) => {
   cuentaAutenticada({ sesionString: solicitud.cookies.sesionString })
     .then(({ autenticado }) => respuesta.json({ autenticado }))
     .catch(error => siguiente(error));
 });
 
-router.get('/dragones', (solicitud, respuesta, siguiente) => {
+ruta.get('/dragones', (solicitud, respuesta, siguiente) => {
   cuentaAutenticada({ sesionString: solicitud.cookies.sesionString })
     .then(({ cuenta }) => {
       return TablaCuentaDragon.getDragonesCuenta({
@@ -92,7 +92,7 @@ router.get('/dragones', (solicitud, respuesta, siguiente) => {
     .catch(error => siguiente(error));
 });
 
-router.get('/info', (solicitud, respuesta, siguiente) => {
+ruta.get('/info', (solicitud, respuesta, siguiente) => {
   cuentaAutenticada({ sesionString: solicitud.cookies.sesionString })
     .then(({ cuenta, username }) => {
       respuesta.json({ info: { balance: cuenta.balance, username } });
@@ -100,4 +100,4 @@ router.get('/info', (solicitud, respuesta, siguiente) => {
     .catch(error => siguiente(error));
 });
 
-module.exports = router;
+module.exports = ruta;

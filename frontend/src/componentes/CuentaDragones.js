@@ -27,6 +27,7 @@ class CuentaDragones extends Component {
       </div>
     );
   }
+
 }
 
 export default connect(

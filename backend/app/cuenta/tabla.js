@@ -46,11 +46,11 @@ class TablaCuenta {
     });
   }
 
-  static updateBalance({ cuentaId, valor }) {
+  static updateBalance({ cuentaId, value }) {
     return new Promise((resuelto, rechazado) => {
       pool.query(
         'UPDATE cuenta SET balance = balance + $1 WHERE id = $2',
-        [valor, cuentaId],
+        [value, cuentaId],
         (error, respuesta) => {
           if (error) return rechazado(error);
 

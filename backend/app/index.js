@@ -1,6 +1,3 @@
-/*const Dragon = require('./dragon.js'); const Generacion = require('./generacion.js');
-const generacion = new Generacion(); console.log('generacion',generacion);
-const gooby = generacion.nuevoDragon(); console.log('gooby',gooby);*/
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -33,7 +30,5 @@ app.use((error, solicitud, respuesta, siguiente)=>{
 });
 
 motor.iniciar();
-
-/*setTimeout(()=>{ motor.detener(); },20000);*/
 
 module.exports = app;

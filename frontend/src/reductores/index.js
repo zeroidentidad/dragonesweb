@@ -7,9 +7,9 @@ import cuentaInfo from './cuentaInfo';
 import dragonesPublicos from './dragonesPublicos';
 
 export default combineReducers({
-  generacion,
-  dragon,
   cuenta,
+  dragon,
+  generacion,
   cuentaDragones,
   cuentaInfo,
   dragonesPublicos

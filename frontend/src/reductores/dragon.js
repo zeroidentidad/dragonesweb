@@ -3,8 +3,11 @@ import recuperarEstados from './recuperarEstados';
 
 const DRAGON_DEFAULT = {
   dragonId: '',
-  generacionId: '',
   nickname: '',
+  generacionId: '',  
+  isPublic: false,
+  saleValue: 0,
+  sireValue: 0,   
   nacimientofecha: '',
   rasgos: []
 };

@@ -14,7 +14,7 @@ const cuentaDragones = (state = CUENTA_DRAGONES_DEFAULT, action) => {
         ...state,
         status: recuperarEstados.success,
         message: action.message,
-        dragons: action.dragons
+        dragones: action.dragones
       };
     default:
       return state;

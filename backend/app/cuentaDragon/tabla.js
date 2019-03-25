@@ -23,7 +23,7 @@ class TablaCuentaDragon {
         (error, respuesta) => {
           if (error) return rechazado(error);
 
-          resuelto({ dragonesCuenta: respuesta.rows });
+          resuelto({ cuentaDragones: respuesta.rows }); // fix final que coincidiera con props front end
         }
       )
     })
@@ -56,6 +56,7 @@ class TablaCuentaDragon {
       )
     });
   }
+  
 }
 
 module.exports = TablaCuentaDragon;

@@ -38,8 +38,8 @@ class DragonAvatar extends Component {
 
 		return(
 			<div>
-				<span>G{generacionId}.</span>
-				<span>I{dragonId}.</span>
+				<span>Gen: {generacionId}.</span>
+				<span>Id: {dragonId}.</span>
 				{ rasgos.map(rasgo => rasgo.valorRasgo).join(', ') }
 				{ this.ImagenDragon }
 			</div>

@@ -1,7 +1,7 @@
 import { DRAGONES_PUBLICOS } from './tipos';
 import { BACKEND } from '../config';
 
-export const fetchPublicDragons = () => dispatch => {
+export const fetchPublicDragones = () => dispatch => {
   dispatch({ type: DRAGONES_PUBLICOS.FETCH });
 
   return fetch(`${BACKEND.ADDRESS}/dragon/dragones-publicos`)

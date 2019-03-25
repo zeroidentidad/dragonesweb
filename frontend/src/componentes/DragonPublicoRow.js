@@ -14,10 +14,10 @@ class DragonPublicoRow extends Component {
     });
   }
 
-  buy = () => {
+  comprar = () => {
     const { dragonId, saleValue } = this.props.dragon;
 
-    fetch(`${BACKEND.ADDRESS}/dragon/buy`, {
+    fetch(`${BACKEND.ADDRESS}/dragon/comprar`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
@@ -43,7 +43,7 @@ class DragonPublicoRow extends Component {
           <span>Valor aparear: {this.props.dragon.sireValue}</span>
         </div>
         <br />
-        <Button onClick={this.buy}>Comprar</Button>{' '}
+        <Button onClick={this.comprar}>Comprar</Button>{' '}
         <Button onClick={this.toggleDisplayMatingOptions}>Aparear</Button>
         <br />
         {
