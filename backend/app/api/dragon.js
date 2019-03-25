@@ -91,7 +91,7 @@ ruta.post('/comprar', (solicitud, respuesta, siguiente) => {
         TablaCuentaDragon.updateCuentaDragon({
           dragonId, cuentaId: buyerId
         }),
-        DragonTable.updateDragon({
+        TablaDragon.updateDragon({
           dragonId, isPublic: false
         })
       ])
